@@ -1,6 +1,6 @@
 # 2023 Project
 
-1. [미술품 관리 서비스 Artlink](1st_proj_Artlink) 
+1. [미술품 관리 서비스 Artlink](202301Artlink) 
 
 기간:  2023 7/3 ~ 8/18 (7주)
 
@@ -17,7 +17,7 @@
 > 3. 임베디드 기기와 Spring Server간 통신을 위한 Django Bridge Server 개발
 > 4. CI/CD 작업
 
-2. [냉장고 나눔 서비스 신나냉](2nd_proj_Exciting_Fridge) 
+2. [냉장고 나눔 서비스 신나냉](202302ExcitingFridge) 
 
 기간: 2023 8/21 ~ 10/1 (7주)
 
