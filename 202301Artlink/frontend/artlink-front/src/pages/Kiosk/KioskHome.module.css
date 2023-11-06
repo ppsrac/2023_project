@@ -1,0 +1,65 @@
+.notice-container {
+  position: relative;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  justify-content: space-between;
+  height: 60%;
+  width: 100%;
+  justify-content: end;
+}
+.notice-intro div{
+  font-size: 20px;
+  margin: 5px;
+}
+.notice-intro p{
+  font-size: 27px;
+  font-weight: 700;
+  margin-bottom: 40px;
+}
+.notice-box-outer {
+  display: flex;
+  width: 300px;
+  height: 150px;
+  border-radius: 5%;
+  box-shadow: 5px 5px 20px rgb(71, 71, 71), -5px -5px 20px rgb(255, 255, 255);
+  position: relative;
+  z-index: 1;
+  padding: 3px;
+  margin-top: 60px;
+}
+
+.notice-box {
+  display: flex;
+  width: 300px;
+  height: 150px;
+  border-radius: 5%;
+  box-shadow: inset 3px 3px 8px rgb(71, 71, 71),
+    inset -3px -3px 8px rgb(255, 255, 255);
+  position: relative;
+  z-index: 1;
+}
+
+.notice-text {
+  margin: auto;
+  font-size: 30px;
+  text-transform: uppercase;
+  font-family: SUITE-REGULAR;
+  text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.5);
+  color: rgb(45, 45, 45);
+  background-color: #e0e0e0;
+  width: 70%;
+  height: 30%;
+}
+
+.inputWrapper {
+  width: 10%;
+  position: absolute;
+  z-index: 0;
+}
+.inputWrapper input, .inputWrapper button{
+  border: none !important;
+  box-shadow: none;
+  background-color: #e0e0e0;
+  color: #e0e0e0;
+}

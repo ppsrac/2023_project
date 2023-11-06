@@ -1,0 +1,61 @@
+.title1 {
+  font-size: 20px;
+  font-weight: 500;
+  margin-top: 20px;
+  font-family: IAMAPLAYER;
+}
+.title2 {
+  font-size: 40px;
+  font-weight: 700;
+  margin: 10px;
+  font-family: IAMAPLAYER;
+}
+.teamInfo {
+  /* border: 1px solid pink; */
+  padding: 20px;
+  display: flex;
+  justify-content: space-around;
+  flex-wrap: wrap;
+  width: 80%;
+  margin: auto;
+}
+.teamMember {
+  /* border: 1px solid rgb(64, 66, 181); */
+  margin: 10px;
+  width: 28%;
+}
+.teamImg {
+  width: 80% !important;
+  object-fit: cover;
+  border-radius: 1000px;
+}
+.infoName {
+  font-size: 16px;
+  font-family: TheJamsil5;
+}
+.infoRole {
+  font-size: 12px;
+}
+.infoComment {
+  font-size: 12px;
+  margin-top: 5px;
+  margin-bottom: 10px;
+}
+
+@media (max-width: 1024px) {
+  .teamMember {
+    width: 45%;
+  }
+}
+@media (max-width: 767px) {
+  .teamMember {
+    width: 80%;
+  }
+}
+
+/* 768px에서 1024px 사이인 경우 */
+@media (min-width: 768px) and (max-width: 1024px) {
+  .teamMember {
+    width: 45%;
+  }
+}

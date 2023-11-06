@@ -1,0 +1,38 @@
+/* 스타일 예시 */
+.pagination {
+  display: flex;
+  justify-content: center;
+  margin-top: 20px;
+  list-style: none;
+  padding: 0;
+}
+
+.pagination li {
+  margin: 0 5px;
+  display: inline-block;
+}
+
+.pagination li a {
+  color: #333;
+  text-decoration: none;
+  padding: 5px 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.pagination li.active a {
+  background-color: #383838;
+  color: #fff;
+  border-color: #383838;
+}
+
+.pagination li a:hover {
+  background-color: #f0f0f0;
+  color: #333;
+}
+
+.pagination li.disabled a {
+  pointer-events: none;
+  opacity: 0.6;
+}

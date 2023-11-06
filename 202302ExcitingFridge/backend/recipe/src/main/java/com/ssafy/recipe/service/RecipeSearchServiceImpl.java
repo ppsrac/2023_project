@@ -1,0 +1,286 @@
+package com.ssafy.recipe.service;
+
+import com.fasterxml.jackson.databind.ObjectMapper;
+import com.ssafy.recipe.api.request.RecipeSearchMemberRequest;
+import com.ssafy.recipe.api.request.RecipeSearchRequest;
+import com.ssafy.recipe.api.response.HouseIngredientResponse;
+import com.ssafy.recipe.api.response.MemberResponse;
+import com.ssafy.recipe.api.response.RecipeSearchResponse;
+import com.ssafy.recipe.api.response.Response;
+import com.ssafy.recipe.db.entity.FavoriteRecipe;
+import com.ssafy.recipe.db.entity.IngredientInfo;
+import com.ssafy.recipe.db.entity.Recipe;
+import com.ssafy.recipe.db.entity.RecipeIngredient;
+import com.ssafy.recipe.db.repository.*;
+import com.ssafy.recipe.exception.CustomException;
+import com.ssafy.recipe.exception.ErrorCode;
+import com.ssafy.recipe.service.feign.HouseIngredientFeign;
+import com.ssafy.recipe.service.feign.MemberFeign;
+import lombok.RequiredArgsConstructor;
+import org.json.JSONArray;
+import org.json.JSONObject;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
+import org.springframework.stereotype.Service;
+
+import javax.persistence.EntityManager;
+import javax.persistence.TypedQuery;
+import java.time.LocalDate;
+import java.util.ArrayList;
+import java.util.HashSet;
+import java.util.List;
+import java.util.Optional;
+import java.util.stream.Collectors;
+
+@Service
+@RequiredArgsConstructor
+public class RecipeSearchServiceImpl implements RecipeSearchService {
+
+    private final EntityManager entityManager;
+
+    private final MemberFeign memberFeign;
+
+    private final FavoriteRecipeRepository favoriteRecipeRepository;
+
+    private final HouseIngredientFeign houseIngredientFeign;
+
+    private final RecipeIngredientRepository recipeIngredientRepository;
+
+    private final RecipeCustomIngredientRepository recipeCustomIngredientRepository;
+
+    private final ObjectMapper objectMapper;
+
+    private final RecipeRepository recipeRepository;
+
+    private final IngredientInfoRepository ingredientInfoRepository;
+
+    @Override
+// TODO : 쿼리 검증 및 최적화 방안 모색
+    public Response getSearchRecipe(RecipeSearchRequest recipeSearchRequest) {
+        Response response = new Response();
+        int size = recipeSearchRequest.getRequiredIngredients().size();
+        if(recipeSearchRequest.getRequiredIngredients().size() == 0){
+            size = 0;
+            recipeSearchRequest.setRequiredIngredients(ingredientInfoRepository.findAll());
+        }
+
+
+        List<Short> requiredIngredientIds = recipeSearchRequest.getRequiredIngredients().stream()
+                .map(IngredientInfo::getIngredientInfoId)
+                .collect(Collectors.toList());
+
+        List<Short> excludedIngredientIds = recipeSearchRequest.getExcludedIngredients().stream()
+                .map(IngredientInfo::getIngredientInfoId)
+                .collect(Collectors.toList());
+
+        TypedQuery<Recipe> query = this.getTotalCount(requiredIngredientIds, excludedIngredientIds, recipeSearchRequest.getKeyword(), size);
+        List<Recipe> totRecipeList = query.getResultList();
+
+        int startPosition = (recipeSearchRequest.getPage()-1) * recipeSearchRequest.getSize();
+        query.setFirstResult(startPosition);
+        query.setMaxResults(recipeSearchRequest.getSize());
+
+        List<Recipe> recipeList = query.getResultList();
+
+        List<RecipeSearchResponse> result = new ArrayList<>();
+
+        MemberResponse my = this.getMember(recipeSearchRequest.getMemberId());
+        for(int i=0; i<recipeList.size(); i++){
+            Recipe recipe = recipeList.get(i);
+            MemberResponse memberResponse = this.getMember(recipe.getMemberId());
+
+            int myIngredients = this.getMyIngredientCnt(recipe, my.getHouseCode());
+
+            int neededIngredients = this.getNeededIngredientsCnt(recipe);
+
+            if(neededIngredients-myIngredients > recipeSearchRequest.getMissingIngredientCount()) continue;
+
+            boolean isFavorite = this.favoriteCheck(recipeSearchRequest.getMemberId(), recipe.getRecipeId());
+
+            RecipeSearchResponse recipeSearchResponse = RecipeSearchResponse.builder()
+                    .recipeId(recipe.getRecipeId())
+                    .title(recipe.getTitle())
+                    .nickname(memberResponse.getNickname())
+                    .profileImageUrl(memberResponse.getProfileImageUrl())
+                    .imageUrl(recipe.getImageUrl())
+                    .cookingTime(recipe.getCookingTime())
+                    .serving(recipe.getServing())
+                    .favoriteCount(recipe.getFavoriteCount())
+                    .foodName(recipe.getFoodName())
+                    .neededIngredients(neededIngredients)
+                    .isFavorite(isFavorite)
+                    .followCount(memberResponse.getFollowCount())
+                    .myIngredients(myIngredients)
+                    .build();
+
+            result.add(recipeSearchResponse);
+        }
+        response.addData("recipe",result);
+        response.addRequest("page", recipeSearchRequest.getPage());
+        response.addRequest("size", recipeSearchRequest.getSize());
+        response.addData("totalCount", totRecipeList.size());
+        response.addData("totalPage", (int) Math.ceil((double)totRecipeList.size()/recipeSearchRequest.getSize()));
+        return response;
+    }
+
+    @Override
+    public Response getMemberRecipe(RecipeSearchMemberRequest recipeSearchMemberRequest) {
+        Response response = new Response();
+
+        Pageable pageable = PageRequest.of(recipeSearchMemberRequest.getPage(), recipeSearchMemberRequest.getSize());
+
+        List<Recipe> recipeList = recipeRepository.findAllByMemberId(recipeSearchMemberRequest.getSearchId(), pageable);
+
+        int totalCount = recipeRepository.countByMemberId(recipeSearchMemberRequest.getSearchId());
+        List<RecipeSearchResponse> result = new ArrayList<>();
+
+        MemberResponse my = this.getMember(recipeSearchMemberRequest.getMyId());
+        for(int i=0; i<recipeList.size(); i++){
+            Recipe recipe = recipeList.get(i);
+            MemberResponse memberResponse = this.getMember(recipe.getMemberId());
+
+            int myIngredients = this.getMyIngredientCnt(recipe, my.getHouseCode());
+
+            int neededIngredients = this.getNeededIngredientsCnt(recipe);
+
+            boolean isFavorite = this.favoriteCheck(recipeSearchMemberRequest.getMyId(), recipe.getRecipeId());
+
+            RecipeSearchResponse recipeSearchResponse = RecipeSearchResponse.builder()
+                    .recipeId(recipe.getRecipeId())
+                    .title(recipe.getTitle())
+                    .nickname(memberResponse.getNickname())
+                    .profileImageUrl(memberResponse.getProfileImageUrl())
+                    .imageUrl(recipe.getImageUrl())
+                    .cookingTime(recipe.getCookingTime())
+                    .serving(recipe.getServing())
+                    .favoriteCount(recipe.getFavoriteCount())
+                    .foodName(recipe.getFoodName())
+                    .neededIngredients(neededIngredients)
+                    .isFavorite(isFavorite)
+                    .followCount(memberResponse.getFollowCount())
+                    .myIngredients(myIngredients)
+                    .build();
+
+            result.add(recipeSearchResponse);
+        }
+        response.addData("recipe",result);
+        response.addRequest("page", recipeSearchMemberRequest.getPage());
+        response.addRequest("size", recipeSearchMemberRequest.getSize());
+        response.addData("totalCount", totalCount);
+        response.addData("totalPage", (int) Math.ceil((double)totalCount/recipeSearchMemberRequest.getSize()));
+        return response;
+    }
+    @Override
+    public boolean favoriteCheck(long memberId, int recipeId){
+        Optional<FavoriteRecipe> favoriteRecipe = favoriteRecipeRepository.findByRecipeRecipeIdAndMemberId(recipeId, memberId);
+
+        if(favoriteRecipe.isEmpty()) return false;
+
+        return true;
+    }
+
+    @Override
+    public int getNeededIngredientsCnt(Recipe recipe){
+        return recipeIngredientRepository.countAllByRecipe(recipe)+recipeCustomIngredientRepository.countAllByRecipe(recipe);
+    }
+
+    @Override
+    public void getRecipeSearchResponse(long memberId) {
+
+    }
+
+    @Override
+    public int getMyIngredientCnt(Recipe recipe, String houseCode){
+        List<HouseIngredientResponse> houseIngredientResponses= this.getHouseIngredientResponse(houseCode);
+
+        System.out.println("houseIngredientResponses = " + houseIngredientResponses.size());
+
+        List<RecipeIngredient> recipeIngredientList = recipeIngredientRepository.findAllByRecipe(recipe);
+
+        System.out.println("recipeIngredientList = " + recipeIngredientList.size());
+
+
+        HashSet<Integer> hashSet = new HashSet<>();
+        for(int i=0; i<recipeIngredientList.size(); i++){
+            int ingredientInfo = recipeIngredientList.get(i).getIngredientInfo().getIngredientInfoId();
+            for(int j=0; j<houseIngredientResponses.size(); j++){
+                if(houseIngredientResponses.get(j).getIngredientInfoId() == ingredientInfo) hashSet.add(ingredientInfo);
+            }
+        }
+        return hashSet.size();
+    }
+
+
+    @Override
+    public List<HouseIngredientResponse> getHouseIngredientResponse(String houseCode){
+
+        String st = houseIngredientFeign.getHouseIngredient(houseCode);
+
+        JSONObject jsonObject = new JSONObject(st);
+
+        // "request" 객체에서 "houseCode" 값을 추출
+        JSONArray ingredientsArray = jsonObject.getJSONObject("data").getJSONArray("ingredients");
+
+        // 결과를 저장할 리스트
+        List<HouseIngredientResponse> resultList = new ArrayList<>();
+
+        // "ingredients" 배열을 순회하면서 필요한 데이터를 추출하여 객체로 만들고 리스트에 추가
+        for (int i = 0; i < ingredientsArray.length(); i++) {
+            JSONObject ingredientObject = ingredientsArray.getJSONObject(i);
+            int ingredientInfoId = ingredientObject.getInt("ingredientInfoId");
+            String ingredientName = ingredientObject.getString("ingredientName");
+            JSONObject ingredient = ingredientsArray.getJSONObject(i);
+            String lastDate = ingredient.isNull("lastDate") ? null : ingredient.getString("lastDate");
+
+            HouseIngredientResponse houseIngredientResponse = HouseIngredientResponse.builder()
+                    .ingredientInfoId(ingredientInfoId)
+                    .ingredientName(ingredientName).build();
+
+            if(lastDate != null) houseIngredientResponse.setLastDate(LocalDate.parse(lastDate));
+
+            resultList.add(houseIngredientResponse);
+        }
+
+        return resultList;
+    }
+
+    @Override
+    public MemberResponse getMember(Long memberId){
+        MemberResponse memberResponse = objectMapper.convertValue(memberFeign.getMemberDetail(memberId).getData().get("memberInfo"),MemberResponse.class);
+        if(memberResponse != null){
+            return memberResponse;
+        }else{
+            throw new CustomException(ErrorCode.NOT_FOUND_MEMBER);
+        }
+    }
+
+    @Override
+    public TypedQuery<Recipe> getTotalCount(List<Short> requiredIngredientIds, List<Short> excludedIngredientIds, String keyword, long size){
+        TypedQuery<Recipe> query = entityManager.createQuery(
+                "SELECT DISTINCT r " +
+                        "FROM Recipe r " +
+                        "JOIN r.recipeIngredients ri " +
+                        "WHERE r.recipeId IN (" +
+                        " SELECT req.recipe.recipeId " +
+                        " FROM RecipeIngredient req " +
+                        " WHERE req.ingredientInfo.ingredientInfoId IN :requiredIngredients " +
+                        " AND req.recipe.recipeId NOT IN (" +
+                        " SELECT req2.recipe.recipeId " +
+                        " FROM RecipeIngredient req2 " +
+                        " WHERE req2.ingredientInfo.ingredientInfoId IN :excludedIngredients " +
+                        " )" +
+                        ")" +
+                        "AND r.title LIKE :keyword " +
+                        "GROUP BY r.recipeId " +
+                        "HAVING COUNT(r.recipeId) >= :requiredIngredientsSize " +
+                        "ORDER BY r.recipeId DESC", Recipe.class);
+
+        query.setParameter("requiredIngredients", requiredIngredientIds);
+        query.setParameter("excludedIngredients", excludedIngredientIds);
+        query.setParameter("keyword", "%" + keyword + "%");
+        query.setParameter("requiredIngredientsSize", size);
+
+
+        return query;
+    }
+}

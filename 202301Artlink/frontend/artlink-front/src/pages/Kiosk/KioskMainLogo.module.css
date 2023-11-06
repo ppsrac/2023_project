@@ -1,0 +1,11 @@
+.logo {
+  color: rgb(0, 0, 0);
+  font-size: 20px !important;
+  text-decoration: none !important;
+  font-weight: bold;
+  font-family: ArtLink;
+  text-transform: uppercase;
+  text-shadow: -2px 2px 2px rgba(0, 0, 0, 0.5),
+    2px -2px 1px rgba(255, 255, 255, 0.8);
+  margin-top: 8vh;
+}

@@ -1,0 +1,9 @@
+videos/1.0.0.mp4 filter=lfs diff=lfs merge=lfs -text
+videos/admin.mp4 filter=lfs diff=lfs merge=lfs -text
+videos/gallery.mp4 filter=lfs diff=lfs merge=lfs -text
+videos/kiosk.mp4 filter=lfs diff=lfs merge=lfs -text
+videos/user.mp4 filter=lfs diff=lfs merge=lfs -text
+frontend/artlink-front/src/Threejs/Models/character.fbx filter=lfs diff=lfs merge=lfs -text
+frontend/artlink-front/src/Threejs/Models/joyful.fbx filter=lfs diff=lfs merge=lfs -text
+frontend/artlink-front/src/Threejs/Models/martelo2.fbx filter=lfs diff=lfs merge=lfs -text
+frontend/artlink-front/src/Threejs/Models/running.fbx filter=lfs diff=lfs merge=lfs -text

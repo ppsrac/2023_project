@@ -1,0 +1,117 @@
+.AMDFrame {
+  display: flex;
+  padding: 20px;
+  flex-direction: column;
+  margin: auto;
+}
+.AMBRightBox {
+  width: 100%;
+  margin-top: auto;
+}
+.AMDTitleTxt {
+  margin-top: 5%;
+  font-size: 21px;
+  font-weight: 600;
+  border-bottom: 1px groove black;
+  display: flex;
+  width: 80%;
+  margin-left: auto;
+  margin-right: auto;
+  text-shadow: 2px 2px 3px rgba(0, 0, 0, 0.2),
+    -1px -1px 1px rgba(255, 255, 255, 0.7);
+}
+
+.AMDimageBox {
+  width: 70%;
+  margin: auto;
+}
+.AMDimage {
+  width: 90%;
+  /* padding: 6%; */
+  background-color: rgb(236, 236, 236);
+  box-shadow: 3px 3px 3px rgb(43, 43, 43, 1), -2px -2px 3px white;
+}
+.AMDtxtBox {
+  /* border: 1px solid rgb(104, 200, 125); */
+  /* text-shadow: -1px -1px 1px rgba(255, 255, 255, 0.2),
+    0.5px 0.5px 2px rgba(77, 77, 77, 0.7) !important; */
+  padding: 6%;
+  /* padding-right: 0%; */
+  text-align: start;
+  font-size: 12px;
+  word-wrap: break-word;
+}
+.smallFontSize {
+  font-size: 12px;
+}
+.largeFontSize {
+  font-size: 12px;
+}
+.AMDbtnBox {
+  /* border: 1px solid rgb(136, 104, 200); */
+  padding-left: 5%;
+  display: flex;
+  justify-content: space-around;
+}
+
+.AMDLinkBtn {
+  width: 40%;
+}
+.AMDMyrecordBtn {
+  width: 50%;
+}
+
+.AMDMyrecordBtn,
+.AMDLinkBtn {
+  padding: 10px;
+  border: none;
+  color: rgb(138, 138, 138);
+  /* background-color: transparent; */
+  box-shadow: 2px 2px 3px rgba(37, 37, 37, 0.2);
+  transition: color 0.5s ease, box-shadow 0.5s ease;
+  font-family: SUITE-Regular;
+}
+.AMDMyrecordBtn:hover,
+.AMDLinkBtn:hover {
+  box-shadow: 1px 1px 1px rgba(37, 37, 37, 0.2),
+    -1px -1px 2px rgba(255, 255, 255, 0.7);
+  color: rgb(58, 58, 58);
+}
+.AMDMyrecordBtn:active,
+.AMDLinkBtn:active {
+  box-shadow: inset 1px 1px 5px rgba(0, 0, 0, 0.2);
+  color: rgb(58, 58, 58);
+}
+.AMDFrameOn {
+  padding: 20px;
+}
+.descript {
+  word-break: break-all;
+}
+
+@media (max-width: 767px) {
+  .AMDFrame {
+    display: block;
+  }
+  .AMDimageBox {
+    width: 90%;
+    margin: auto;
+  }
+  .AMBRightBox {
+    width: 100%;
+  }
+  .AMDtxtBox {
+    padding-right: 6%;
+    font-size: 12px;
+  }
+  .AMDTitleTxt {
+    font-size: 16px !important;
+  }
+  .smallFontSize {
+    font-size: 12px;
+  }
+  .descript {
+    width: 40vw;
+    margin: auto;
+  }
+}

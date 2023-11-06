@@ -1,0 +1,91 @@
+.ExhibitionInfooutter {
+  display: flex;
+  justify-content: space-around;
+  margin-top: 30px !important;
+  margin: auto;
+  padding: 5px;
+  /* border-radius: 50px; */
+  box-shadow: 10px 10px 20px rgba(37, 37, 37, 0.2),
+    -10px -10px 20px rgba(255, 255, 255, 0.7);
+    transition: box-shadow 0.3s ease;
+}
+.ExhibitionInfooutter:hover {
+  box-shadow: 15px 15px 30px rgba(37, 37, 37, 0.2),
+    -15px -15px 30px rgba(255, 255, 255, 0.7);
+}
+
+.ExhibitionInfo {
+  display: flex;
+  max-width: 700px;
+  justify-content: space-around;
+  width: 50vw !important;
+  margin: auto;
+  padding: 5vh;
+  /* border-radius: 50px; */
+  box-shadow: inset 2px 2px 2px rgba(37, 37, 37, 0.2),
+  inset -2px -2px 2px rgba(255, 255, 255, 0.7);
+  background-color: rgb(224, 224, 224);
+}
+.imagebox {
+  display: flex;
+  flex-direction: column;
+  width: 50%;
+}
+.imageInnerBox {
+  margin: 20px 20px 0px 20px;
+}
+.workImage {
+  background-color: rgb(236, 236, 236);
+  box-shadow: 2px 2px 5px rgb(80, 80, 80), -4px -4px 5px white;
+  padding: 3px;
+  width: 90%;
+  border: 4.5px solid rgb(59, 59, 59);
+}
+.ExhibitionTxt {
+  padding-left: 0;
+  text-align: left;
+  font-size: 12px;
+  width: 50%;
+  display: flex;
+  flex-direction: column;
+  margin-top: 20px;
+}
+.ExhibitionInputContainer {
+  display: block;
+  align-items: baseline;
+  /* width: 35vw; */
+}
+.ExhibitionInput {
+  border: none !important;
+  border-radius: 10px;
+  padding: 4px 10px 4px 10px ;
+  /* margin-top: 10px; */
+  margin-left: 10px;
+  width: 70%;
+}
+
+@media (max-width: 1024px) {
+  .ExhibitionInfo {
+    display: block;
+  }
+
+  .ExhibitionTxt {
+    margin: auto;
+    margin-top: 30px;
+    width: 100%;
+  }
+  .imagebox {
+    margin: auto;
+    width: 70%;
+  }
+  .ExhibitionInputContainer {
+    display: flex;
+    flex-direction: column;
+    width: 80%;
+    margin: auto;
+  }
+  .ExhibitionInput {
+    margin: auto;
+    width: 90%;
+  }
+}

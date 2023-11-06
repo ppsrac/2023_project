@@ -1,0 +1,25 @@
+.header {
+  background-color: #e0e0e0;
+  display: flex;
+  justify-content: center;
+  text-align: center;
+  font-family: ArtLink;
+  /* height: 10vh; */
+  /* margin-top: 10vh; */
+}
+
+.headerMainLogo {
+  margin-right: auto;
+  margin-left: 5%;
+}
+
+@media (max-width: 767px) {
+  .headerMainLogo {
+    margin-right: 0;
+    margin-left: 0;
+    height: 100px;
+  }
+  .header {
+    flex-direction: column;
+  }
+}

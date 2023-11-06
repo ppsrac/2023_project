@@ -1,0 +1,26 @@
+package com.ssafy.chatroom.service.impl;
+
+import com.ssafy.chatroom.db.entity.ChatRoomEntity;
+import com.ssafy.chatroom.db.repository.ChatRoomRepository;
+import com.ssafy.chatroom.service.ChatRoomSearchService;
+import lombok.RequiredArgsConstructor;
+import org.springframework.stereotype.Service;
+
+import java.util.List;
+import java.util.Optional;
+
+@Service
+@RequiredArgsConstructor
+public class ChatRoomSearchServiceImpl implements ChatRoomSearchService {
+    private final ChatRoomRepository chatRoomRepository;
+
+    @Override
+    public List<ChatRoomEntity> searchByMemberId(Long memberId) {
+        return chatRoomRepository.findAllBySenderMemberIdOrReceiverMemberId(memberId,memberId);
+    }
+
+    @Override
+    public Optional<ChatRoomEntity> searchBySharePostIdAndSenderMemberId(Integer sharePostId, Long senderMemberId) {
+        return chatRoomRepository.findChatRoomEntityBySharePostIdAndAndSenderMemberId(sharePostId, senderMemberId);
+    }
+}

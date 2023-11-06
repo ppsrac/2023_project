@@ -1,0 +1,190 @@
+/* 슬라이더 */
+
+[class^="number-slide"],
+[class*="number-slide"] {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  font-size: 50px;
+  color: #ffffff;
+  font-weight: 500;
+  height: 35vw;
+  /* max-height: 100vh; */
+  min-height: 400px !important;
+}
+.slideContainer {
+  width: 80%;
+  margin: auto;
+  margin-top: 5vh;
+  /* box-shadow:-20vw 0px black, 20vw 0px black */
+}
+.minwid {
+  width: 100% !important;
+  margin: auto;
+  margin-top: 7vh;
+  margin-bottom: 10vh;
+
+  /* border: 1px solid black; */
+}
+.innerSlideBox_outter {
+  background-color: #e0e0e0;
+  width: 75%;
+  height: 80%;
+  display: flex;
+  box-shadow: 8px 8px 15px rgba(37, 37, 37, 0.2),
+    -8px -8px 15px rgba(255, 255, 255, 0.7);
+  transition: box-shadow 0.3s ease, width 0.3s ease, height 0.3s ease,
+    padding 0.3s ease;
+  padding: 1.4%;
+  margin-top: 20px;
+}
+.innerSlideBox_outter:hover {
+  box-shadow: 4px 4px 5px rgba(37, 37, 37, 0.2),
+    -4px -4px 5px rgba(255, 255, 255, 0.7);
+  padding: 2%;
+}
+.innerSlideBox {
+  background-color: #e0e0e0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  height: 100%;
+  margin: auto;
+  box-shadow: inset 5px 5px 5px rgba(37, 37, 37, 0.2),
+    inset -8px -8px 8px rgba(255, 255, 255, 0.7);
+  transition: box-shadow 0.3s ease, width 0.3s ease, height 0.3s ease;
+}
+.innerSlideBoxTxt{
+  font-size: 14px;
+  font-family: inherit;
+  color: rgb(71, 71, 71);
+}
+.innerSlideBoxTxt span{
+  font-size: 11px;
+  font-family: inherit;
+  color: rgb(0, 0, 0);
+  text-decoration: underline;
+}
+.innerSlideBox img {
+  width: 80%;
+  height: 87%;
+  object-fit: cover;
+  /* border: 6px solid rgb(255, 255, 255); */
+  box-shadow: 2px 2px 5px rgb(44, 44, 44), -2px -2px 5px rgb(225, 225, 225);
+}
+
+.innerSlideBox:hover {
+  box-shadow: inset 3px 3px 2px rgba(19, 19, 19, 0.2),
+    inset -4px -4px 4px rgba(255, 255, 255, 0.7);
+  width: 100%;
+  height: 100%;
+  font-size: 40px;
+}
+.innerTxt1 {
+  color: black;
+  font-family: SUITE-Regular;
+  font-size: 14px;
+  margin-bottom: 5px;
+  text-shadow: -1px -1px 1px rgba(255, 255, 255, 0.2),
+    1px 1px 1px rgba(0, 0, 0, 0.7);
+  transition: font-size 0.3s ease;
+  margin-top: 10px;
+}
+.innerSlideBox:hover .innerTxt1 {
+  font-size: 16px;
+}
+.innerTxt2 {
+  color: black;
+  font-family: SUITE-Regular;
+  font-size: 11px;
+  margin-top: 5px;
+}
+
+.linkbox {
+  text-decoration: none;
+}
+.oneview{
+  width: 30%;
+  text-decoration: none;
+}
+
+.introBox {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 80%;
+  /* height: 90%; */
+  color: black;
+  text-align: left;
+  margin-top: auto;
+  margin-bottom: 20%;
+}
+.introtxt {
+  font-size: 45px;
+  font-weight: 500;
+  margin: 0;
+  text-shadow: 1px 2px 1px rgba(255, 255, 255, 0.2),
+    2px 1px 4px rgba(0, 0, 0, 0.7);
+}
+.introtxt2 {
+  font-size: 14px;
+  text-shadow: -1px -1px 1px rgba(255, 255, 255, 0.2),
+    1px 1px 8px rgba(93, 93, 93, 0.7);
+}
+.introtxt3 {
+  display: flex;
+  font-size: 18px;
+  font-weight: 500;
+  text-shadow: -1px -1px 1px rgba(255, 255, 255, 0.2),
+    1px 1px 2px rgba(93, 93, 93, 0.7);
+  border-bottom: 1px solid black;
+  margin-top: 10px;
+}
+
+@media (max-width: 1024px) {
+  [class^="number-slide"],
+  [class*="number-slide"] {
+    height: 90vw !important;
+    width: 50vw !important;
+    max-height: 100vh;
+    display: inherit;
+  }
+  .introBox {
+    width: 60%;
+    margin-top: 40px !important;
+    text-align: center;
+  }
+  .innerTxt1 {
+    font-size: 13px;
+  }
+  .innerSlideBox:hover .innerTxt1 {
+    font-size: 15px;
+  }
+  .minwid {
+    margin-top: unset;
+    margin-bottom: unset;
+  }
+  .innerSlideBox_outter {
+    width: 80%;
+    height: 90%;
+    margin: auto;
+    max-width: 300px;
+    max-height: 450px;
+  }
+  .slideContainer {
+    margin-top: 0;
+  }
+  .onemobile{
+    display: inline-block !important;
+    justify-content: center;
+    margin: auto;
+    /* max-height: 700px; */
+    width: 80% !important;
+  }
+  .oneview{
+    width: 100% !important;
+  }
+}

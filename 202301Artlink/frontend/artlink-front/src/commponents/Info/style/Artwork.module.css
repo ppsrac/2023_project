@@ -1,0 +1,12 @@
+.ArtworkTable {
+  width: 70%;
+  margin: auto;
+}
+
+@media (max-width: 1024px) {
+  .ArtworkTable {
+    width: 90%;
+    margin: auto;
+    margin-top: 5%;
+  }
+}

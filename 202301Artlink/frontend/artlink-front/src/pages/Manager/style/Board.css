@@ -1,0 +1,21 @@
+.container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  width: 100%;
+}
+
+.board_title {
+  width: 50%;
+  text-align: left;
+  margin: 0 0 20px 5%;
+  font-size: 20px;
+}
+
+@media (max-width: 767px) {
+  .board_title {
+    text-align: center;
+    margin: 2% 0 5% 0;
+  }
+}

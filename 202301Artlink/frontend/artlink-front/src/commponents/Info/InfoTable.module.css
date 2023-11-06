@@ -1,0 +1,15 @@
+.tableTr {
+  height: 50px !important;
+  font-size: 22px !important;
+  background-color: rgb(63, 63, 63);
+  color: azure;
+  border-left: 20px solid rgb(63, 63, 63);
+}
+
+span {
+  margin: 10px;
+}
+
+input {
+  width: 50%;
+}

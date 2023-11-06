@@ -1,0 +1,62 @@
+/* ExhibitionBoard.tsx */
+
+.ExhibitionMenu {
+  display: flex;
+  text-align: center;
+  align-items: baseline;
+  width: 80vw;
+  margin: auto;
+}
+.ExhibitionTitle {
+  margin-right: auto;
+  margin-top: 5%;
+  font-size: 22px;
+}
+
+.ExhibitionContainer {
+  margin: auto;
+  display: flex;
+  justify-content: space-around;
+  flex-wrap: wrap;
+  width: 65vw;
+  padding-bottom: 50px !important;
+}
+
+@media (max-width: 767px) {
+  .ExhibitionMenu {
+    display: block;
+  }
+  .ExhibitionTitle {
+    margin-top: 5%;
+    margin-bottom: 30px;
+  }
+}
+
+/* ExhibitionCreate.tsx */
+.CreateMenu {
+  display: flex;
+  align-items: center;
+  width: 80vw;
+  margin: auto;
+  margin-top: 5%;
+}
+.CreateTitle {
+  margin-left: 20px;
+  margin-right: auto;
+  font-size: 22px;
+}
+.CreateContainer {
+  margin: auto;
+  display: flex;
+  flex-direction: column;
+}
+
+@media (max-width: 767px) {
+  .CreateMenu {
+    display: block;
+  }
+  .CreateTitle {
+    margin-left: unset;
+    margin-bottom: 30px;
+  }
+}

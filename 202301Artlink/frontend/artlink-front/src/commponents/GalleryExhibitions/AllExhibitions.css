@@ -1,0 +1,76 @@
+.ExhibitionLink {
+  text-decoration: none;
+  color: black;
+  width: 16vw;
+  box-shadow: 15px 15px 30px rgba(37, 37, 37, 0.2),
+    -15px -15px 30px rgba(255, 255, 255, 0.7);
+  padding: 3px;
+  margin: 10px;
+  margin-top: 6vh;
+  min-height: 300px;
+  transition: box-shadow 0.5s ease, padding 0.5s ease;
+}
+.ExhibitionBox {
+  /* padding: 10px; */
+  box-shadow: inset 10px 10px 8px rgba(37, 37, 37, 0.2),
+    inset -10px -10px 8px rgba(255, 255, 255, 0.7);
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  transition: box-shadow 0.5s ease, background-color 0.5s ease;
+}
+.ExhibitionLink:hover {
+  box-shadow: 4px 4px 8px rgba(37, 37, 37, 0.2),
+    -4px -4px 8px rgba(255, 255, 255, 0.7);
+  padding: 2px;
+}
+.ExhibitionBox:hover {
+  box-shadow: inset 2px 2px 4px rgba(37, 37, 37, 0.2),
+    inset -2px -2px 4px rgba(255, 255, 255, 0.7);
+}
+
+.ExhibitionBox img {
+  width: 60%;
+  object-fit: contain;
+  display: block; /* Add this line */
+  margin: auto;
+  box-shadow: 2px 2px 6px rgba(0, 0, 0, 1), -2px -2px 6px rgba(255, 255, 255, 1);
+  transition: box-shadow 0.5s ease, width 0.5s ease;
+}
+.ExhibitionLink:hover img {
+  width: 58%;
+  box-shadow: 2px 2px 2px rgba(0, 0, 0, 1), -2px -2px 2px rgba(255, 255, 255, 1);
+}
+
+.ExhibitionTitle {
+  font-size: 13px;
+  /* text-shadow: 1px 1px 2px rgb(80, 80, 80), -1px -1px 2px white; */
+  text-transform: capitalize;
+  font-weight: 500;
+  margin: 10px 10px 10px 10px;
+  color: rgb(83, 83, 83);
+  transition: color 0.5s ease;
+  overflow: hidden; /* 넘치는 부분 숨김 */
+  text-overflow: ellipsis; /* 생략 부호 (...) 표시 */
+  word-break: keep-all;
+}
+
+.ExhibitionLink:hover .ExhibitionTitle {
+  color: rgb(0, 0, 0);
+}
+
+@media (max-width: 767px) {
+  .ExhibitionLink {
+    width: 50vw;
+  }
+  .ExhibitionTitle {
+    font-size: 14px;
+  }
+}
+
+@media (min-width: 768px) and (max-width: 1200px) {
+  .ExhibitionLink {
+    width: 24vw;
+  }
+}

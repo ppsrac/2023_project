@@ -1,0 +1,25 @@
+.BigBtnBox2 {
+  display: flex;
+  justify-content: space-around;
+  width: 100%;
+  flex: 1;
+  margin-bottom: 5vh;
+}
+.HomeInnerFrame {
+  height: 70vh;
+  min-height: 500px;
+  display: flex;
+  flex-direction: column;
+}
+
+@media (max-width: 1024px) {
+  .BigBtnBox2 {
+    display: block;
+    margin-top: auto;
+    margin-top: 5%;
+  }
+  .HomeInnerFrame {
+    height: unset;
+    margin-bottom: 5%;
+  }
+}

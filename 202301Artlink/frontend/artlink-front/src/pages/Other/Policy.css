@@ -1,0 +1,57 @@
+.P_container_outer {
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  width: 80%;
+  margin: auto;
+  word-break: break-all;
+  padding: 4px;
+  box-shadow: 15px 15px 30px rgb(68, 68, 68),
+    -15px -15px 30px rgb(255, 255, 255);
+  margin-bottom: 70px;
+  margin-top: 20px;
+  max-width: 800px;
+}
+.P_container {
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  margin: auto;
+  word-break: break-all;
+  box-shadow: inset 2px 2px 5px rgb(40, 40, 40),
+    inset -2px -2px 5px rgb(255, 255, 255);
+}
+
+.P_title {
+  font-size: 24px;
+  margin-top: 10vh;
+  margin-bottom: 10px;
+  font-weight: 600;
+}
+
+.P_title_info {
+  font-size: 14px;
+  width: 100%;
+  margin: auto;
+  margin-bottom: 50px;
+  width: 80%;
+}
+.P_inBox {
+  border: 1px dashed rgb(167, 167, 167);
+  margin: auto;
+  margin-bottom: 30px;
+  padding: 10px;
+  width: 80%;
+}
+.P_subtitle {
+  font-size: 16px;
+  font-weight: 600;
+  margin-bottom: 10px;
+}
+.P_outertxt {
+  font-size: 14px;
+  margin-bottom: 5px;
+}
+.P_innertxt {
+  font-size: 13px;
+}

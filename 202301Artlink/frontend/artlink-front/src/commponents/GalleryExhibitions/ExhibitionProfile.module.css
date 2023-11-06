@@ -1,0 +1,115 @@
+.MypageinnerBox {
+  display: flex;
+  justify-content: space-around;
+  margin-top: 5%;
+}
+
+.infoOuterBoxLeft {
+  margin: auto;
+  margin-right: 5%;
+  margin-left: 5%;
+}
+.infoOuterBoxRight {
+  width: 80%;
+  font-family: SUITE-Regular;
+}
+.infoOuterBoxRightGal {
+  /* width: 80%; */
+  font-family: SUITE-Regular;
+  display: flex;
+  justify-content: center;
+}
+.infoInnerBoxLeft {
+  margin: auto;
+}
+
+.infoInnerBoxRight {
+  margin: auto;
+  text-align: left;
+  min-width: 400px;
+}
+.infoInnerBoxRightGal {
+  margin: auto;
+  text-align: left;
+  /* min-width: 400px; */
+  display: flex;
+  flex-direction: column;
+}
+
+.profileInput {
+  border: none;
+  border-radius: 10px;
+  padding: 5px;
+  padding-left: 10px;
+  font-family: SUITE-Regular;
+}
+.profileTextArea {
+  border: none;
+  border-radius: 10px;
+  padding: 5px;
+  padding-left: 10px;
+  font-family: SUITE-Regular;
+  width: 50vw;
+  max-width: 50vw;
+}
+
+.changeBtn {
+  border: none;
+  background-color: transparent;
+  box-shadow: 2px 2px 3px rgba(37, 37, 37, 0.2),
+    -3px -3px 3px rgba(255, 255, 255, 0.7);
+  width: 160px;
+  height: 50px;
+  border-radius: 25px;
+  margin-bottom: 10px;
+  margin-top: 30px;
+  color: rgb(138, 138, 138);
+  font-size: 18px;
+  transition: color 0.5s ease, box-shadow 0.5s ease;
+  font-family: SUITE-Regular;
+}
+
+.changeBtn:hover {
+  color: rgb(58, 58, 58);
+  box-shadow: 2px 2px 1px rgba(37, 37, 37, 0.2),
+    -1px -1px 2px rgba(255, 255, 255, 0.7);
+}
+.changeBtn:active {
+  box-shadow: inset 2px 2px 1px rgba(37, 37, 37, 0.2),
+    inset -5px -5px 3px rgba(255, 254, 254, 0.2),
+    2px 2px 1px rgba(163, 162, 162, 0.2);
+}
+
+@media (max-width: 767px) {
+  .MypageinnerBox {
+    display: block;
+  }
+  .infoOuterBoxLeft {
+    display: flex;
+  }
+  .infoOuterBoxRight {
+    margin: auto;
+    width: unset;
+    margin-top: 5%;
+  }
+  .infoInnerBoxRightGal {
+    text-align: center;
+    min-width: unset;
+  }
+  .infoOuterBoxRightGal {
+    margin: auto;
+    width: unset;
+    margin-top: 5%;
+    display: block;
+    min-width: unset;
+  }
+  .infoInnerBoxRight {
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+    min-width: unset;
+  }
+  .description {
+    width: 80%;
+  }
+}

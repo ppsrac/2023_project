@@ -1,0 +1,70 @@
+/*
+code from: https://codepen.io/qrx357/pen/VwKwzYv
+*/
+
+.wrapper {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  margin-top: 20vh;
+}
+
+.loading-spinner {
+  position: relative;
+}
+
+.loading-spinner__ring::before {
+  content: "";
+  position: absolute;
+  border-radius: 50%;
+  top: 35px;
+  left: 35px;
+  right: 35px;
+  bottom: 35px;
+  background-color: #d6d6d6;
+  z-index: 1;
+  /* border: 3px solid #ffffff11; */
+  box-shadow: inset 2px 2px 4px #0000001f, inset -5px -5px 10px white;
+}
+
+.loading-spinner__ring {
+  position: relative;
+  z-index: 1;
+  overflow: hidden;
+  width: 300px;
+  height: 300px;
+  border-radius: 50%;
+  /* border: 3px solid #ffffff11; */
+  box-shadow: -5px -5px 15px #170606f0, 5px 5px 15px #b0a8a81f,
+    inset -5px -5px 15px #fffffff0, inset 5px 5px 15px #0000001f;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.loading-spinner__inner {
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  filter: blur(40px);
+  border-radius: 50%;
+  background: linear-gradient(#fafafa, #656565, #d6d6d6, #5c5c5c);
+  animation: spin 2.5s linear infinite;
+}
+
+@keyframes spin {
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+.text {
+  z-index: 3;
+  font-size: 40px;
+  font-family: MYYeongnamnu;
+  color: rgb(58, 58, 58);
+}

@@ -1,0 +1,194 @@
+.BigBtn {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  height: 50vh;
+  margin-top: 50px;
+  padding: 20px;
+
+  box-shadow: 10px 10px 20px rgba(37, 37, 37, 0.2),
+    -10px -10px 20px rgba(255, 255, 255, 0.7);
+  animation: fadeIn 3s;
+  transition: box-shadow 0.3s ease;
+  font-family: SUITE-Regular;
+}
+.BigBtn:hover {
+  box-shadow: 10px 10px 20px rgba(0, 0, 0, 0.2),
+    -10px -10px 20px rgba(255, 255, 255, 0.877);
+}
+.startbtn {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  max-width: 600px;
+  height: 100%;
+  margin: auto;
+  /* margin-bottom: 0; */
+  box-shadow: inset 3px 3px 10px rgb(59, 59, 59, 0.7), inset 3px 3px 10px rgba(255, 255, 255, 0.7);
+  transition: 0.4s cubic-bezier(0, 0.57, 0.49, 1.51), 0.4s width ease-in-out;
+  transition: box-shadow 0.7s ease;
+  cursor: pointer;
+  animation: fadeIn 0.5s ease-in-out;
+}
+.startbtnOuter {
+  display: flex;
+  flex-direction: column;
+  width: 80%;
+  max-width: 600px;
+  height: 80%;
+  padding: 10px;
+  margin: auto;
+  margin-bottom: 0;
+  box-shadow: 3px 3px 10px rgb(59, 59, 59, 0.7), 3px 3px 10px rgba(255, 255, 255, 0.7);
+  transition: 0.4s cubic-bezier(0, 0.57, 0.49, 1.51), 0.4s width ease-in-out, box-shadow 0.7s ease;
+  cursor: pointer;
+  animation: fadeIn 0.5s ease-in-out;
+}
+
+.innerIcon {
+  margin: 0;
+  font-size: 30px;
+  text-shadow: 1px 1px 1px rgba(0, 0, 0, 0.5);
+  color: rgb(83, 83, 83);
+  margin-bottom: 20px;
+  animation: textFadeIn 0.5s ease-in-out;
+}
+.innerIcon2 {
+  font-size: 14px;
+  text-shadow: 1px 1px 1px rgba(0, 0, 0, 0.5);
+  color: rgb(83, 83, 83);
+  animation: textFadeIn 0.5s ease-in-out;
+}
+
+.startbtnOuter:hover .startbtn {
+  box-shadow: inset 2px 2px 10px rgb(62, 62, 62), inset 4px 2px 6px rgb(230, 230, 230);
+  transform: scale(1);
+}
+.startbtnOuter:hover {
+  box-shadow:  4px 4px 20px rgb(83, 83, 83), 4px 4px 15px rgb(230, 230, 230);
+  transform: scale(0.9);
+}
+
+.startbtnBody {
+  display: flex;
+  flex: 1;
+  height: 100%;
+  margin-top: auto;
+}
+
+.animateBtn {
+  animation: fadeOut 0.5s ease-in-out;
+}
+.animateBtn2 {
+  animation: fadeOut2 0.5s ease-in-out;
+}
+
+.animateText3 {
+  animation: titletextout 0.5s ease-in-out;
+}
+.animateText {
+  opacity: 0;
+  transition: opacity 0.5s ease-in-out;
+}
+.animateText2 {
+  opacity: 0;
+  transition: opacity 0.2s ease-in-out;
+}
+
+@keyframes fadeIn {
+  /* 0% {
+    box-shadow: inset 10px 10px 8px rgba(0, 0, 0, 0.1),
+      inset -10px -10px 8px rgba(255, 255, 255, 0.5);
+    color: #e0e0e0;
+  } */
+  0% {
+    box-shadow: none;
+    color: #e0e0e0;
+  }
+  100% {
+    /* box-shadow: 10px 10px 20px rgba(0, 0, 0, 0.2),
+      -10px -10px 20px rgba(255, 255, 255, 0.7); */
+  }
+}
+@keyframes fadeOut {
+  0% {
+    /* box-shadow: 10px 10px 20px rgba(0, 0, 0, 0.2),
+      -10px -10px 20px rgba(255, 255, 255, 0.7); */
+  }
+  40% {
+  }
+  100% {
+    box-shadow: none;
+    
+  }
+  /* 100% {
+    box-shadow: inset 3px 3px 8px rgba(0, 0, 0, 0.1),
+      inset -3px -3px 8px rgba(255, 255, 255, 0.5);
+  } */
+}
+@keyframes fadeOut2 {
+  0% {
+    /* box-shadow: 10px 10px 20px rgba(0, 0, 0, 0.2),
+      -10px -10px 20px rgba(255, 255, 255, 0.7); */
+  }
+  50% {
+  }
+  100% {
+    box-shadow: none;
+  }
+  /* 100% {
+    box-shadow: inset 3px 3px 8px rgba(0, 0, 0, 0.1),
+      inset -3px -3px 8px rgba(255, 255, 255, 0.5);
+  } */
+}
+
+@keyframes textFadeIn {
+  0% {
+    opacity: 0;
+  }
+  20%{
+    
+  }
+  100% {
+    opacity: 1;
+  }
+}
+@keyframes titletextout {
+  0% {
+    opacity: 1;
+  }
+
+  100% {
+    opacity: 0;
+  }
+}
+
+@media (max-width: 1024px) {
+  .BigBtn {
+    width: 60%;
+    height: 35vh;
+    margin-left: auto;
+    margin-right: auto;
+  }
+  .startbtn {
+    /* width: 70%; */
+    /* min-width: 200px; */
+    /* padding: 10px; */
+    /* min-width: 300px !important; */
+    /* height: 30vh; */
+  }
+  .startbtnBody {
+    /* margin-top: 8vh; */
+    margin: auto;
+    height: 300px;
+    width: 80%;
+    flex: unset;
+    max-width: 500px;
+  }
+  .innerIcon{
+    font-size: 20px;
+  }
+  .innerIcon2 {
+    font-size: 12px;
+  }
+}

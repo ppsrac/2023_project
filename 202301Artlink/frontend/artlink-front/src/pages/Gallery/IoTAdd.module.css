@@ -1,0 +1,74 @@
+.IoTBox {
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  /* width: 80%; */
+  /* min-width: 500px; */
+  max-width: 1000px;
+  margin: auto;
+}
+
+.inputWrapper {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-direction: column;
+  margin: auto;
+  margin-bottom: 5vh;
+  margin-top: 2vh;
+  width: 40%;
+  max-width: 600px;
+}
+.infoInputOuter {
+  border: none;
+  padding: 4px;
+  border-radius: 1rem;
+  background: #e0e0e0;
+  box-shadow: 5px 5px 10px #626262, -4px -4px 10px #ffffff;
+  transition: 0.3s;
+  width: 100%;
+  display: flex;
+  margin-top: 20px;
+}
+.infoInput {
+  border: none;
+  padding: 1rem;
+  border-radius: 1rem;
+  background: #e0e0e0;
+  box-shadow: inset 2px 2px 4px #616161, inset -2px -2px 4px #ffffff;
+  transition: 0.3s;
+  width: 100%;
+}
+
+.infoInput:focus {
+  outline-color: #e0e0e0;
+  background: #e0e0e0;
+  box-shadow: inset 4px 4px 5px #272727, inset -4px -4px 10px #ffffff;
+  transition: 0.3s;
+}
+
+.btn {
+  width: 200px;
+  margin: auto;
+  height: 38px;
+  border: none;
+  outline: none;
+  border-radius: 20px;
+  background-color: #727171;
+  font-size: 20px;
+  font-weight: 500;
+  color: #ffffff;
+  cursor: pointer;
+  box-shadow: -5px -5px 8px #d8e2e6, 5px 5px 10px #2c313378;
+  transition: 0.8s;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-family: SUITE-Regular;
+  text-decoration-line: none;
+}
+
+.btn:hover {
+  background-color: #535658;
+  box-shadow: inset 5px 5px 10px #05050578, inset -5px -5px 10px #9e9c9c;
+}

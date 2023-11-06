@@ -1,0 +1,167 @@
+.MypageinnerBox {
+  display: flex;
+  width: 100%;
+  margin: auto;
+}
+
+.infoOuterBoxLeft {
+  margin: auto;
+  width: 50%;
+}
+.infoOuterBoxRight {
+  width: 50%;
+  font-family: SUITE-Regular;
+  margin-top: auto;
+  margin-bottom: 20px;
+}
+.infoOuterBoxRight p {
+  margin: 10px;
+}
+.infoOuterBoxRightGal {
+  font-family: SUITE-Regular;
+  display: flex;
+  width: 100%;
+}
+.infoInnerBoxLeft {
+  margin: auto;
+}
+.inputOrder {
+  display: flex;
+  flex-direction: column;
+  font-size: 12px;
+}
+
+.infoInnerBoxRight {
+  text-align: left;
+}
+.infoInnerBoxRightGal {
+  text-align: left;
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  margin: auto;
+}
+
+.profileInput {
+  border: 1px solid rgb(163, 163, 163);
+  border-radius: 10px;
+  padding: 5px;
+  font-size: 11px;
+  padding-left: 10px;
+  font-family: SUITE-Regular;
+  margin-top: 10px;
+  width: 80%;
+}
+.profileTextArea {
+  border: 1px solid rgb(163, 163, 163);
+  border-radius: 10px;
+  padding: 10px 10px 10px 15px;
+  font-family: SUITE-Regular;
+  width: 95%;
+  max-width: 100%;
+  height: auto;
+  overflow: visible;
+  margin: auto;
+  margin-top: 10px;
+}
+.eachField {
+  font-size: 12px;
+  margin: 5px;
+}
+.changeBtn {
+  border: none;
+  background-color: transparent;
+  box-shadow: 2px 2px 3px rgba(37, 37, 37, 0.2),
+    -3px -3px 3px rgba(255, 255, 255, 0.7);
+  width: 100px;
+  height: 50px;
+  border-radius: 25px;
+  margin-bottom: 10px;
+  margin-top: 30px;
+  color: rgb(138, 138, 138);
+  font-size: 14px;
+  transition: color 0.5s ease, box-shadow 0.5s ease;
+  font-family: SUITE-Regular;
+}
+
+.changeBtn:hover {
+  color: rgb(58, 58, 58);
+  box-shadow: 2px 2px 1px rgba(37, 37, 37, 0.2),
+    -1px -1px 2px rgba(255, 255, 255, 0.7);
+}
+.changeBtn:active {
+  box-shadow: inset 2px 2px 1px rgba(37, 37, 37, 0.2),
+    inset -5px -5px 3px rgba(255, 254, 254, 0.2),
+    2px 2px 1px rgba(163, 162, 162, 0.2);
+}
+
+.profileImg {
+  box-shadow: 1px 1px 3px black, -1px -1px 3px rgb(255, 255, 255);
+  filter: contrast(100%) saturate(100%) sepia(10%);
+  width: 80%;
+  max-width: 200px;
+}
+.allowBox {
+  display: flex;
+}
+.allowBtn {
+  width: 30%;
+  margin: 0;
+  display: flex;
+  margin-top: 10px;
+}
+
+@media (max-width: 767px) {
+  .MypageinnerBox {
+    display: block;
+  }
+  .infoOuterBoxLeft {
+    display: flex;
+    flex-direction: column;
+  }
+  .infoOuterBoxRight {
+    margin: auto;
+    width: unset;
+    margin-top: 5%;
+  }
+  .infoInnerBoxRightGal {
+    text-align: center;
+    min-width: unset;
+  }
+  .infoOuterBoxRightGal {
+    margin: auto;
+    width: unset;
+    margin-top: 5%;
+    display: block;
+    min-width: unset;
+  }
+  .infoInnerBoxRight {
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+    min-width: unset;
+  }
+  .description {
+    width: 80%;
+  }
+  .profileTextArea {
+    width: 80%;
+  }
+  .profileInput {
+    margin: auto;
+    margin-top: 10px;
+    width: 80%;
+  }
+  .profileImg {
+    width: 100%;
+    max-width: 200px;
+  }
+  .allowBox {
+    flex-direction: column;
+  }
+  .allowBtn {
+    margin: auto;
+    width: 30%;
+    margin-top: 10px;
+  }
+}

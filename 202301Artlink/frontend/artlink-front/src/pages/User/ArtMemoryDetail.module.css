@@ -1,0 +1,123 @@
+.artmemory-container-outter {
+  display: flex;
+  justify-content: space-between;
+  margin: auto;
+  box-shadow: 15px 15px 30px rgba(37, 37, 37, 0.5),
+    -15px -15px 30px rgba(255, 255, 255, 1);
+  padding: 5px;
+  width: 70vw;
+  max-width: 900px;
+}
+.artmemory-container {
+  display: flex;
+  justify-content: space-between;
+  width: 70vw;
+  margin: auto;
+  box-shadow: inset 4px 4px 3px rgba(37, 37, 37, 0.5),
+    inset -3px -3px 3px rgba(255, 255, 255, 0.7);
+  padding-bottom: 1%;
+  max-width: 900px;
+}
+
+.artdetailLeft {
+  /* Styles for the left side (50% width) */
+  float: left;
+  box-sizing: border-box;
+  padding: 10px;
+  /* border: 1px solid rgb(245, 10, 10); */
+  flex-direction: column;
+}
+
+.artdetailRight {
+  /* float: left; */
+  box-sizing: border-box;
+  padding: 6px;
+  box-shadow: 2px 2px 2px rgba(37, 37, 37, 0.2),
+    -2px -2px 2px rgba(255, 255, 255, 0.7);
+  display: flex;
+  flex-direction: column;
+  /* width: 40% !important; */
+  height: 100%;
+}
+.artdetailRight2 {
+  /* float: left; */
+  box-sizing: border-box;
+  /* margin: 5%; */
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  margin: auto;
+}
+.artdetailRight3 {
+  /* float: left; */
+  box-sizing: border-box;
+  padding: 6px;
+  /* border: 1px solid rgb(81, 10, 245); */
+  margin: 5%;
+  box-shadow: inset 4px 4px 5px rgba(37, 37, 37, 0.2),
+    inset -4px -4px 5px rgba(255, 255, 255, 0.7);
+  display: flex;
+  flex-direction: column;
+  width: 40% !important;
+}
+/* 버튼 */
+.AMDRightBtn {
+  width: 40%;
+  padding: 10px;
+  border: none;
+  color: rgb(138, 138, 138);
+  box-shadow: 2px 2px 3px rgba(37, 37, 37, 0.2);
+  transition: color 0.5s ease, box-shadow 0.5s ease;
+  font-family: SUITE-Regular;
+  margin-bottom: 20px;
+}
+.AMDRightBtn:hover {
+  box-shadow: 1px 1px 1px rgba(37, 37, 37, 0.2),
+    -1px -1px 2px rgba(255, 255, 255, 0.7);
+  color: rgb(58, 58, 58);
+}
+.AMDRightBtn:active {
+  box-shadow: inset 1px 1px 5px rgba(0, 0, 0, 0.2);
+  color: rgb(58, 58, 58);
+}
+/* 상단 헤더 */
+.MyrecordHead {
+  display: flex;
+  justify-content: space-around;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 20px;
+}
+
+/* Media query for mobile screens (max-width: 767px) */
+@media (max-width: 767px) {
+  .artmemory-container-outter {
+    width: 80vw !important;
+    min-width: unset !important;
+  }
+  .artmemory-container {
+    display: block;
+    width: 80vw !important;
+    min-width: unset !important
+  }
+
+  .artdetailLeft {
+    width: 80vw;
+    float: none;
+    box-sizing: content-box;
+    padding: 10px;
+    padding-left: 0px;
+  }
+  .artdetailRight,
+  .artdetailRight2,
+  .artdetailRight3 {
+    width: 100% !important;
+    float: none;
+    box-sizing: content-box;
+    padding: 0;
+    /* padding-left: 0px; */
+    margin: 0;
+    margin-bottom: 30px;
+    box-shadow: none;
+  }
+}
