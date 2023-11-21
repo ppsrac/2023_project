@@ -1,64 +1,29 @@
 # 천구 투영 및 별사진 인식 앱 Stellargram
 
-### 별들을 더 가까이, 별들을 소장하고 싶은 사람들을 위하여
-
-
-## ✨ 기획 배경
-### 1. 기존 어플리케이션이 천체 관측에 대한 진입장벽을 낮춰주지 못 함.
-- 기존의 어플리케이션은 대다수 사용자가 천체 관측을 진행할 수 있도록 도와주는 가이드 기능이 부재되어 있음.
-### 2. 고가의 천체관측기기
-- 현재 망원경, DSLR 등을 구매하려고 하면 수십만원의 고비용이 발생함. 그러나 대다수 사용자가 보유한 스마트폰으로 양질의 천체 사진을 촬영할 수 있음. 
-### 3. 정보 공유를 위한 커뮤니티의 부재
-- 천체 관측을 하기 위해서는 많은 가이드가 필요하나, 이러한 정보를 얻을 수 있는 커뮤니티가 부족함.
-
-## 📆 프로젝트 소개
-* **프로젝트명**
-
-  별들을 더 가까이, 별들을 소장하고 싶은 사람들을 위한 앱 Stellargram
-
-* **서비스 특징** 
-
-  * C++ NDK를 이용한 부드러운 3D 천체 투영 구현.
-  * CameraX 및 Camera2 기능을 활용한 천체 사진용 인앱 카메라 제공.
-  * Google Maps를 이용한 관측 포인트 정보 제공과 웹소켓과 Redis Pub/Sub을 이용한 관측포인트 당 채팅 기능 구현.
-
-## 🙌주요 기능
-### 1. 천체 투영기능
-다양한 조작을 통해 원하는 시각, 배율, 방향에 따른 하늘을 투영해줌.
-
-- 스크롤을 통한 방향 전환, 줌인 줌아웃을 통한 배율을 조정할 수 있음.
-- 하단의 시간 조절 탭을 이용해 원하는 시각의 하늘을 투영시킬 수 있음.
-- 검색 탭을 이용해 원하는 천체를 검색해 볼 수 있음. 
-
-### 2. 천체 사진 기능
-사용자에게 천체 사진을 촬영할 수 있도록 안내를 제공하고 직접 촬영할 수 있도록 해 줌. 
-
-- ISO, 노출 시간, WB(White Balance) 조정을 제공해주고 하단의 안내 문구를 통해 사용자가 간단하게 천체 사진을 촬영할 수 있도록 해 줌.
-- 촬영한 사진에 어떠한 천체가 포함되어 있는지 확인할 수 있음.
-- 사진에 별자리 표시 등 커스텀 설정을 제공하여 천체 사진을 더욱 이쁘게 꾸밀 수 있음.
-- 촬영한 사진을 다양한 사용자와 공유할 수 있음. 
-
-### 3. 천체 관측소 정보 공유
-사용자에게 천체 관측에 적합한 장소 정보를 제공해주고, 다양한 사용자와 정보 공유를 할 수 있는 채팅 기능을 제공해 줌.
-
-- Google Maps에 다양한 관측지를 망원경 모양의 아이콘으로 표시해주고 누를 시 상세 정보와 함께 채팅에 입장할 수 있도록 함.
-- 길게 누르기와 버튼 선택이라는 행동을 통해 간단하게 관측 포인트 등록을 할 수 있고, 별점 및 코멘트를 통해 관측지에 대한 평가를 진행할 수 있음. 
-- 채팅 기능을 통해 다양한 사용자와 해당 관측지에 대한 정보를 공유할 수 있음. 
+# 기획 배경 및 프로젝트 소개
+- [기획 배경 및 프로젝트 소개](exec/1.%20기획%20배경%20및%20프로젝트%20소개.md)
 
 # 💁 설계
-- [🧱 서비스아키텍쳐](https://potent-light-313.notion.site/60bdd82c4c284937828c88f02d6b705b?pvs=4)
+
+## 🧱 서비스 아키텍쳐
+
+![Service Architecture](resource/service.png)
+
+## 📱 와이어프레임  
+- [와이어프레임 사이트](https://www.figma.com/file/8HSSYFTxHEk9PhSd8cHjbh/Stellargram?type=design&node-id=0-1&mode=design) 참조
   
-- [📱 와이어프레임](https://www.figma.com/file/8HSSYFTxHEk9PhSd8cHjbh/Stellargram?type=design&node-id=0-1&mode=design)
+## 🎨 ERD
+![ERD](resource/ERD.png)
+ 
+## 📬 API 명세서
+- [API 명세서](https://potent-light-313.notion.site/API-10bb1c1e8cbd40e9b7701a2e90bad9d8?pvs=4) 참조
   
-- [🎨 ERD](https://potent-light-313.notion.site/ERD-7b2964c873e14f5ca58acee060f8f0a4?pvs=4)
-  
-- [📬 API 명세서](https://potent-light-313.notion.site/API-10bb1c1e8cbd40e9b7701a2e90bad9d8?pvs=4)
-  
-- [📋 컨벤션](https://potent-light-313.notion.site/Convention-bdade896368546fe8ae8f57ac4e02a4b?pvs=4)  
+## 📋 컨벤션
+- [컨벤션](https://potent-light-313.notion.site/Convention-bdade896368546fe8ae8f57ac4e02a4b?pvs=4) 참조  
 
 
 # 📡 업무
-![img.png](resource/image/System_Architecture.png)
+![업무](resource/image/System_Architecture.png)
 (빨간 색으로 표현한 것은 본인이 진행한 업무)
 
 ## Backend
